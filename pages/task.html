@@ -1,0 +1,171 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Management System</title>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.task-container {
+  width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.task-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.task-list li {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.task-list li:last-child {
+  border-bottom: none;
+}
+
+.task-name {
+  font-weight: bold;
+}
+
+.assignee,
+.due-date,
+.status {
+  display: block;
+  margin-top: 5px;
+}
+nav {
+  background-color: #007bff;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+  background-color: #0056b3;
+}
+
+</style>
+</head>
+<body>
+    <nav>
+        <ul>
+          <li><a href="admin-page.html">Home</a></li>
+          <li><a href="leave.html">Leave Management</a></li>
+          <li><a href="#tasks"class="active">Tasks</a></li>
+          <li><a href="performance.html">Performance Reviews</a></li>
+          <li><a href="payRoll.html">Payroll</a></li>
+          <li><a href="#reports">Reports</a></li>
+        </ul>
+      </nav>
+<div class="task-container">
+  <h1>Task Management System</h1>
+  <form>
+    <label for="taskName">Task Name:</label>
+    <input type="text" id="taskName" name="taskName" required>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" rows="4" required></textarea>
+    <label for="dueDate">Due Date:</label>
+    <input type="date" id="dueDate" name="dueDate" required>
+    <label for="assignee">Assignee:</label>
+    <select id="assignee" name="assignee" required onchange="changeAssigneeName()">
+        <option value="">Select Assignee</option>
+      <option value="1">Riphat Nfor</option>
+      <option value="2">Yembe Riphat Nfor</option>
+      <option value="2">DB Graphix</option>
+      <!-- Add more options for other employees -->
+    </select>
+    <button type="submit">Create Task</button>
+  </form>
+  <h2>Task List</h2>
+  <ul class="task-list">
+    <li>
+      <span class="task-name">Task 1</span>
+      <span class="assignee">Assigned to: <span id="currentAssignee">Riphat Nfor</span></span>
+      <span class="due-date">Due Date: 2024-03-15</span>
+      <span class="status">Status: In Progress</span>
+    </li>
+    <!-- Add more task items as needed -->
+  </ul>
+</div>
+<script>
+  function changeAssigneeName() {
+  var assigneeSelect = document.getElementById("assignee");
+  var assigneeName = document.getElementById("currentAssignee");
+  var selectedAssignee = assigneeSelect.options[assigneeSelect.selectedIndex].text;
+  assigneeName.textContent = selectedAssignee;
+}  
+</script>
+</body>
+</html>
+
+
+
+
+

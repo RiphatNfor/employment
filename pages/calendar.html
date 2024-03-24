@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h2> Nextinch Event Calendar</h2>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Event</th>
+    <th>Location</th>
+  </tr>
+  <tr>
+    <td>01/01/2023</td>
+    <td>First Anual Meeting</td>
+    <td>Company's Hall</td>
+  </tr>
+  <tr>
+    <td>02/14/2023</td>
+    <td>Valentine's Day</td>
+    <td>Everywhere</td>
+  </tr>
+  <tr>
+    <td>05/30/2023</td>
+    <td>Public Holiday</td>
+    <td>Everywhere</td>
+  </tr>
+  <tr>
+    <td>07/04/2023</td>
+    <td>Independence Day</td>
+    <td>Everywhere</td>
+  </tr>
+  <tr>
+    <td>09/05/2023</td>
+    <td>Labor Day</td>
+    <td>Everywhere</td>
+  </tr>
+  <tr>
+    <td>10/31/2023</td>
+    <td>General leave to employees</td>
+    <td>Everywhere</td>
+  </tr>
+  <tr>
+    <td>11/11/2023</td>
+    <td>Veterans Day</td>
+    <td>Everywhere</td>
+  </tr>
+
+</table>
+
+
+<script>
+  var events = [
+    {date: "01/01/2023", event: "New Year's Day", location: "Everywhere"},
+    {date: "02/14/2023", event: "Valentine's Day", location: "Everywhere"},
+    {date: "05/30/2023", event: "Memorial Day", location: "Everywhere"},
+    {date: "07/04/2023", event: "Independence Day", location: "Everywhere"},
+    {date: "09/05/2023", event: "Labor Day", location: "Everywhere"},
+    {date: "10/31/2023", event: "Halloween", location: "Everywhere"},
+    {date: "11/11/2023", event: "Veterans Day", location: "Everywhere"}
+  ];
+  
+  var table = document.getElementById("event-calendar");
+  
+  for (var i = 0; i < events.length; i++) {
+      var row = table.insertRow(i+1);
+      var dateCell = row.insertCell(0);
+      var eventCell = row.insertCell(1);
+      var locationCell = row.insertCell(2);
+      dateCell.innerHTML = events[i].date;
+      eventCell.innerHTML = events[i].event;
+      locationCell.innerHTML = events[i].location;
+  }
+  </script>
+  
+
+</body>
+</html>

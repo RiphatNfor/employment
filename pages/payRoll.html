@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payroll System</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f4f4f4;
+  }
+
+  .btn {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #0056b3;
+  }
+
+  .status {
+    font-weight: bold;
+    color: green;
+  }
+
+  .status.pending {
+    color: orange;
+  }
+
+  .status.paid {
+    color: green;
+  }
+
+  .status.failed {
+    color: red;
+  }
+  nav {
+    background-color: #444;
+    padding: 10px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  nav ul li a:hover {
+    text-decoration: underline;
+  }
+  
+</style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="admin-page.html">Home</a></li>
+      <li><a href="leave.html">Leave Management</a></li>
+      <li><a href="#performance">Contact</a></li>
+      <li><a href="faq.html">Faq</a></li>
+      <li><a href="event.html">Add Events</a></li>
+    </ul>
+  </nav>
+<div class="container">
+  <h1>Payroll System</h1>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Salary</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>Nfor Riphat</td>
+      <td>Manager</td>
+      <td>CFA5000</td>
+      <td class="status paid">Paid</td>
+      <td><button class="btn" onclick="paySalary(this, 'John Doe', 5000)">Pay Salary</button></td>
+    </tr>
+    <tr>
+      <td>Yembe Riphat Nfor</td>
+      <td>Developer</td>
+      <td>CFA4000</td>
+      <td class="status pending">Pending</td>
+      <td><button class="btn" onclick="paySalary(this, 'Jane Smith', 4000)">Pay Salary</button></td>
+    </tr>
+    <tr>
+        <td>Riphat Nor Yembe</td>
+        <td>Director</td>
+        <td>CFA7500</td>
+        <td class="status pending">Pending</td>
+        <td><button class="btn" onclick="paySalary(this, 'Jane Smith', 4000)">Pay Salary</button></td>
+      </tr>
+    <!-- Add more employee rows as needed -->
+  </table>
+</div>
+
+<script>
+  function paySalary(button, name, amount) {
+    // Update the status to "Paid"
+    const statusElement = button.parentElement.previousElementSibling;
+    statusElement.textContent = 'Paid';
+    statusElement.classList.remove('pending');
+    statusElement.classList.add('paid');
+
+    // Example: Display a message
+    console.log(`Paid salary of $${amount} to ${name}`);
+    alert(`Paid salary of $${amount} to ${name}`);
+  }
+</script>
+</body>
+</html>

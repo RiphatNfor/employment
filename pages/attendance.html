@@ -1,0 +1,242 @@
+
+  
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance System</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  #clockIn, #clockOut {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  #clockIn:hover, #clockOut:hover {
+    background-color: #0056b3;
+  }
+
+  #clockTime {
+    font-size: 1.5rem;
+    margin-top: 20px;
+  }
+
+nav {
+  background-color: #007bff;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+  background-color: #0056b3;
+}
+#leaveRequestForm {
+    display: none;
+  }
+
+  #leaveRequests {
+    margin-top: 20px;
+  }
+
+  .leave-request {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #f9f9f9;
+  }
+
+</style>
+</head>
+<body>
+  <nav>
+    <ul>
+        <li><a href="employee-page.html">Home</a></li>
+      <li><a href="#">View Tasks</a></li>
+      <li><a href="attendance.html" class="active">Attendance</a></li>
+      <li><a href="faq.html">Faq</a></li>
+      <li><a href="calendar.html">Event</a></li>
+      
+    </ul>
+  </nav>
+<div class="container">
+  <h1>Attendance System</h1>
+  <label for="employeeName">Employee Name:</label>
+  <input type="text" id="employeeName" placeholder="Enter your name">
+  <button id="clockIn">Clock In</button>
+  <button id="clockOut">Clock Out</button>
+  <div id="clockTime"></div>
+  <button id="submit" style="background-color: #0c70db; color:white">Submit</button>
+</div>
+<h2>Leave Requests</h2>
+  <button id="requestLeave"> <a href="Seek.html" style="color: white; background: #007bff; text-decoration: none; padding: 4px;">Request Leave</a> </button>
+  <form id="leaveRequestForm">
+    <label for="leaveReason">Reason for Leave:</label>
+    <textarea id="leaveReason" rows="4"></textarea>
+    <button type="submit">Submit Leave Request</button>
+  </form>
+  <div id="leaveRequests"></div>
+</div>
+
+<script>
+  const clockInButton = document.getElementById('clockIn');
+  const clockOutButton = document.getElementById('clockOut');
+  const clockTime = document.getElementById('clockTime');
+  const submitButton = document.getElementById('submit');
+  let clockInTime = null;
+  let clockOutTime = null;
+
+  clockInButton.addEventListener('click', () => {
+    clockInTime = new Date();
+    updateClockTime();
+  });
+
+  clockOutButton.addEventListener('click', () => {
+    clockOutTime = new Date();
+    updateClockTime();
+  });
+
+  submitButton.addEventListener('click', () => {
+    const employeeName = document.getElementById('employeeName').value;
+    if (employeeName && clockInTime && clockOutTime) {
+      // Here you can process the attendance data, e.g., send it to a server
+      alert(`Attendance submitted for ${employeeName}`);
+      // Reset the form
+      document.getElementById('employeeName').value = '';
+      clockInTime = null;
+      clockOutTime = null;
+      updateClockTime();
+    } else {
+      alert('Please provide your name and clock-in/out times');
+    }
+  });
+
+  function updateClockTime() {
+    let clockInDisplay = '';
+    let clockOutDisplay = '';
+
+    if (clockInTime) {
+      clockInDisplay = `Clock In: ${formatDate(clockInTime)} ${formatTime(clockInTime)}`;
+    }
+
+    if (clockOutTime) {
+      clockOutDisplay = `Clock Out: ${formatDate(clockOutTime)} ${formatTime(clockOutTime)}`;
+    }
+
+    clockTime.innerHTML = `${clockInDisplay}<br>${clockOutDisplay}`;
+  }
+
+  function formatDate(date) {
+    return `${date.getFullYear()}-${padZero(date.getMonth() + 1)}-${padZero(date.getDate())}`;
+  }
+
+  function formatTime(date) {
+    return `${padZero(date.getHours())}:${padZero(date.getMinutes())}:${padZero(date.getSeconds())}`;
+  }
+
+  function padZero(num) {
+    return num.toString().padStart(2, '0');
+  }
+  
+  function resetForm() {
+    clockInTime = null;
+    clockOutTime = null;
+    updateClockTime();
+  }
+
+  function formatDate(date) {
+    return `${date.getFullYear()}-${padZero(date.getMonth() + 1)}-${padZero(date.getDate())}`;
+  }
+
+  function formatTime(date) {
+    return `${padZero(date.getHours())}:${padZero(date.getMinutes())}:${padZero(date.getSeconds())}`;
+  }
+
+  function padZero(num) {
+    return num.toString().padStart(2, '0');
+  }
+  
+  function renderLeaveRequests() {
+    leaveRequestsContainer.innerHTML = '';
+    leaveRequests.forEach((request, index) => {
+      const leaveRequestElement = document.createElement('div');
+      leaveRequestElement.classList.add('leave-request');
+      leaveRequestElement.innerHTML = `<strong>Request ${index + 1}:</strong> ${request.reason} - ${request.status}`;
+      leaveRequestsContainer.appendChild(leaveRequestElement);
+    });
+  }
+
+  function resetForm() {
+    clockInTime = null;
+    clockOutTime = null;
+    updateClockTime();
+  }
+
+  function formatDate(date) {
+    return `${date.getFullYear()}-${padZero(date.getMonth() + 1)}-${padZero(date.getDate())}`;
+  }
+
+  function formatTime(date) {
+    return `${padZero(date.getHours())}:${padZero(date.getMinutes())}:${padZero(date.getSeconds())}`;
+  }
+
+  function padZero(num) {
+    return num.toString().padStart(2, '0');
+  }
+</script>
+</body>
+</html>

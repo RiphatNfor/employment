@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Calendar</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+
+  .calendar {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .calendar-header h2 {
+    font-size: 1.5rem;
+    color: #333;
+  }
+
+  .calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+
+  .day {
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .event {
+    background-color: #007bff;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-top: 2px;
+    font-size: 0.8rem;
+    display: inline-block;
+  }
+
+  .event-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    display: none;
+  }
+
+  .event-modal h3 {
+    margin-top: 0;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div class="calendar">
+  <div class="calendar-header">
+    <h2>March 2024</h2>
+    <button onclick="openEventModal()">Add Event</button>
+  </div>
+  <div class="calendar-body" id="calendar-body">
+    <!-- Calendar days will be dynamically generated here -->
+  </div>
+</div>
+
+<div class="event-modal" id="event-modal">
+  <span class="close-btn" onclick="closeEventModal()">&times;</span>
+  <h3>Add Event</h3>
+  <label for="event-name">Event Name:</label>
+  <input type="text" id="event-name" name="event-name">
+  <label for="event-date">Event Date:</label>
+  <input type="date" id="event-date" name="event-date">
+  <button onclick="addEvent()">Save Event</button>
+</div>
+
+<script>
+  const calendarBody = document.getElementById('calendar-body');
+  const eventModal = document.getElementById('event-modal');
+
+  function openEventModal() {
+    eventModal.style.display = 'block';
+  }
+
+  function closeEventModal() {
+    eventModal.style.display = 'none';
+  }
+
+  function addEvent() {
+    const eventName = document.getElementById('event-name').value;
+    const eventDate = document.getElementById('event-date').value;
+
+    // Example: You can add the event to a database or store it in an array
+    console.log(`Event Name: ${eventName}, Event Date: ${eventDate}`);
+
+    closeEventModal();
+  }
+
+  // You can dynamically generate calendar days here
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Performance Review</title>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.review-container {
+  width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input,
+textarea {
+  padding: 5px;
+  margin-top: 5px;
+}
+
+button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+nav {
+  background-color: #007bff;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+  background-color: #0056b3;
+}
+
+</style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="admin-page.html">Home</a></li>
+          <li><a href="task.html">Tasks</a></li>
+          <li><a href="#performance" class="active">Performance Reviews</a></li>
+          <li><a href="payRoll.html">Payroll</a></li>
+          <li><a href="#reports">Reports</a></li>
+          
+        </ul>
+      </nav>
+      
+<div class="review-container">
+  <h1>Performance Review</h1>
+  <form>
+    <label for="employee">Employee:</label>
+    <select id="employee" name="employee" required>
+      <option value="">Select Employee</option>
+      <option value="1">Riphat Nfor</option>
+      <option value="2">Nfor Riphat</option>
+      <option value="2">Yembe Riphat Nfor</option>
+      <option value="2">DB Riphat Nfor</option>
+      <!-- Add more options for other employees -->
+    </select>
+    <label for="performance">Performance Rating:</label>
+    <input type="number" id="performance" name="performance" min="1" max="5" required>
+    <label for="comment">Comments:</label>
+    <textarea id="comment" name="comment" rows="4" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+</body>
+</html>
+<!-- 
+This design provides a form for managers to select an employee, enter a performance rating, and add comments for the performance review.  -->

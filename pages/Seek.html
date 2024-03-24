@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leave Management System</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type="text"], textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: mediumblue;
+    color: white;
+  }
+button:hover{
+background-color: rgb(213, 25, 169);
+color: whites;
+}
+  #leaveRequestForm {
+    margin-bottom: 20px;
+  }
+
+  .leave-request {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #f9f9f9;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Leave Management System</h1>
+  <form id="leaveRequestForm">
+    <label for="leaveReason">Reason for Leave:</label>
+    <textarea id="leaveReason" rows="4"></textarea>
+    <button type="submit">Submit Leave Request</button>
+  </form>
+  <div id="leaveRequests"></div>
+</div>
+
+<script>
+  const leaveRequestForm = document.getElementById('leaveRequestForm');
+  const leaveRequestsContainer = document.getElementById('leaveRequests');
+  let leaveRequests = [];
+
+  leaveRequestForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const leaveReason = document.getElementById('leaveReason').value;
+    if (leaveReason) {
+      leaveRequests.push({ reason: leaveReason, status: 'Pending' });
+      renderLeaveRequests();
+      leaveRequestForm.reset();
+    } else {
+      alert('Please provide a reason for leave');
+    }
+  });
+
+  function renderLeaveRequests() {
+    leaveRequestsContainer.innerHTML = '';
+    leaveRequests.forEach((request, index) => {
+      const leaveRequestElement = document.createElement('div');
+      leaveRequestElement.classList.add('leave-request');
+      leaveRequestElement.innerHTML = `<strong>Request ${index + 1}:</strong> ${request.reason} - ${request.status}`;
+      leaveRequestsContainer.appendChild(leaveRequestElement);
+    });
+  }
+</script>
+</body>
+</html>

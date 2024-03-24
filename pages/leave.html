@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section#leave form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+section#leave form label {
+  margin-top: 10px;
+}
+
+section#leave form select,
+section#leave form input {
+  padding: 5px;
+  margin-top: 5px;
+}
+
+section#leave form button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+section#leave form button:hover {
+  background-color: #0056b3;
+}
+
+section#leave table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+section#leave table th,
+section#leave table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+nav {
+  background-color: #007bff;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+  background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="admin-page.html">Home</a></li>
+          <li><a href="task.html">Task</a></li>
+          <li><a href="#leave" class="active">Leave Management</a></li>
+        
+          <li><a href="calendar.html">Events</a></li>
+        </ul>
+      </nav>
+      
+    <section id="leave">
+        <h2>Grant leave</h2>
+        <form>
+          <label for="leaveType">Leave Type:</label>
+          <select id="leaveType" name="leaveType" multiple>
+            <option value="vacation">Vacation</option>
+            <option value="sick">Sick Leave</option>
+            <option value="personal">Personal Leave</option>
+            <option value="maternity">Maternity Leave</option>
+            <option value="paternity">Paternity Leave</option>
+            <!-- Add more options as needed -->
+          </select>
+          <label for="name">Employee's name</label>
+          <input type="text" placeholder="Name of employee receiving leave">
+          <label for="startDate">Start Date:</label>
+          <input type="date" id="startDate" name="startDate">
+          <label for="endDate">End Date:</label>
+          <input type="date" id="endDate" name="endDate">
+          <button type="submit">Submit</button>
+        </form>
+        <h3>Leave History</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Leave Type</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Status</th>
+              <th>Employee Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vacation</td>
+              <td>2024-03-15</td>
+              <td>2024-03-20</td>
+              <td>Approved</td>
+              <td>Nfor Riphat</td>
+            </tr>
+            <!-- Add more rows for other leave requests -->
+          </tbody>
+        </table>
+      </section>
+      
+</body>
+</html>
+<!-- This interface allows employees to select the type of leave, specify the start and end dates, and submit their leave request. It also displays a table showing the history of their leave requests, including the leave type, start and end dates, and the status of each request. -->
